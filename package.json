@@ -6,16 +6,7 @@
   "scripts": {
     "test": "testcafe chrome ./tests/*-test.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://gitlab.com/SolopiyMukola1/test.git"
-  },
   "author": "M. Solopii",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://gitlab.com/SolopiyMukola1/test/issues"
-  },
-  "homepage": "https://gitlab.com/SolopiyMukola1/test#readme",
   "devDependencies": {
     "@types/faker": "4.1.5",
     "testcafe": "^1.3.3",
