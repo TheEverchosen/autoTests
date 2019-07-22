@@ -17,7 +17,8 @@ test('My first registration test', async t => {
         .click('[name="newsletter"]')
         .click('[name="create_account"]');
     const expectedText = await Selector('.alert.alert-success').innerText;
-    await t.expect(expectedText.trim().replace(/(\r\n|\n|\r)/gm, '')).eql('Thank you, First Name Last Name!');
     const expectedPageUrl = ClientFunction(() => window.location.href);
-    await t.expect(expectedPageUrl()).contains('');
+    await t
+        .expect(expectedText.trim().replace(/(\r\n|\n|\r)/gm, '')).eql('Thank you, First Name Last Name!')
+        .expect(expectedPageUrl()).contains('');
 });
