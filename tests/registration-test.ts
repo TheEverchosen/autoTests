@@ -1,7 +1,7 @@
 import {ClientFunction, Selector} from 'testcafe';
 import * as faker  from "faker";
 
-fixture `Getting Started`
+fixture `Registration page`
     .page `http://ip-5236.sunline.net.ua:38015/create_account`;
 
 test('My first registration test', async t => {
