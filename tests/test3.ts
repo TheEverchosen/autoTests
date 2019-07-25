@@ -13,16 +13,13 @@ test('Third homework test', async t => {
     const email = faker.internet.email();
     const password = faker.internet.password(10);
     const successMsg = 'Your customer account has been created';
-    const usStates = [];
 
     //create array of states from dropdown (an elegant technical decision)
-    var count = await Selector('[name="zone_code"] option').count;
-        for(let i=0; i < count ;i++){
-            usStates.push(await Selector('[name="zone_code"] option').nth(i).value)          
-}
+    //var count = await Selector('[name="zone_code"] option').count;
+
 
     //select random state 
-    const randomState = usStates[Math.floor(Math.random() * usStates.length)];
+    const randomState = Math.floor(Math.random() * await Selector('[name="zone_code"] option').count);
 
     await t
         //company + phone
@@ -44,12 +41,14 @@ test('Third homework test', async t => {
         .click('.form-control[name="country_code"]')
         .click(Selector('option').withAttribute('value', 'US'))
         .click('.form-control[name="zone_code"]')
-        .click(Selector('option').withAttribute('value', randomState))
+        .click(await Selector('[name="zone_code"] option').nth(randomState))
 
-        //email + password + finalising
+        //email + password
         .typeText('[name="customer_form"] [name="email"]', email)
         .typeText('[name="customer_form"] [name="password"]', password)
         .typeText('[name="customer_form"] [name="confirmed_password"]', password)
+
+        //finalising
         .click('[name="newsletter"]')
         .click('[name="create_account"]');
 
