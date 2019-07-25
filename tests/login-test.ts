@@ -1,6 +1,9 @@
 import {ClientFunction, Selector} from 'testcafe';
-import * as faker  from "faker";
 
+//td: move creds to separate file and import
+const email = 'myrandommail@testmail.com'
+const password = 'eKwmdnr78337'
+const successMsg = 'You are now logged in as My User';
 
 
 fixture `Login page`
@@ -8,10 +11,6 @@ fixture `Login page`
 
 test('Login test', async t => {
     
-    const email = 'myrandommail@testmail.com'
-    const password = 'eKwmdnr78337'
-    const successMsg = 'You are now logged in as My User';
-
     await t
     .click('[class="account dropdown"]')
     .typeText('[placeholder="Email Address"]', email)

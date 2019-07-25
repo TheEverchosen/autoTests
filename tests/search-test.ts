@@ -1,15 +1,15 @@
 import {ClientFunction, Selector} from 'testcafe';
 import * as faker  from "faker";
 
-
+//td: move creds to separate file and import
 const email = 'myrandommail@testmail.com'
 const password = 'eKwmdnr78337'
 const successMsg = 'You are now logged in as My User';
 
-
 fixture `Search`
     .page `http://ip-5236.sunline.net.ua:38015/create_account`
     .beforeEach (async t => {
+
         await t
             .click('[class="account dropdown"]')
             .typeText('[placeholder="Email Address"]', email)
