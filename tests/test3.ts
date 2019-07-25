@@ -8,22 +8,28 @@ fixture `Registration page`
 
 test('Second homework test', async t => {
     
+
+    //declarations
     const email = faker.internet.email();
     const password = faker.internet.password(10);
     const successMsg = 'Your customer account has been created';
-    const usStates = [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL',
-     'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI',
-      'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK',
-       'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV',
-        'WI', 'WY' ];
+    const usStates = [];
+
+    //create array of states from dropdown
+    var count = await Selector('[name="zone_code"] option').count;
+        for(let i=0; i < count ;i++){
+            usStates.push(await Selector('[name="zone_code"] option').nth(i).value)          
+}
+
+    //select random state 
     const randomState = usStates[Math.floor(Math.random() * usStates.length)];
-    
 
     await t
         //company + phone
         .typeText('input[name="company"]', faker.company.companySuffix())
         .typeText('input[name="tax_id"]', "NL999999999B99")
         .typeText('input[name="phone"]', faker.phone.phoneNumberFormat(0))
+        
         //address
         .typeText('input[name="address1"]', faker.address.streetAddress())
         .typeText('input[name="address2"]', faker.address.secondaryAddress())
@@ -49,7 +55,7 @@ test('Second homework test', async t => {
 
     const expectedText = await Selector('.alert.alert-success').innerText;
     const expectedPageUrl = ClientFunction(() => window.location.href);
-    
+
     await t
         .expect(expectedText.replace(/[^A-Za-z0-9]/g, ' ').trim()).eql(successMsg)
         .expect(expectedPageUrl()).contains('');
