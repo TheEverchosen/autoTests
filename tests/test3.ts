@@ -6,7 +6,7 @@ import * as faker  from "faker";
 fixture `Registration page`
     .page `http://ip-5236.sunline.net.ua:38015/create_account`;
 
-test('Second homework test', async t => {
+test('Third homework test', async t => {
     
 
     //declarations
@@ -15,7 +15,7 @@ test('Second homework test', async t => {
     const successMsg = 'Your customer account has been created';
     const usStates = [];
 
-    //create array of states from dropdown
+    //create array of states from dropdown (an elegant technical decision)
     var count = await Selector('[name="zone_code"] option').count;
         for(let i=0; i < count ;i++){
             usStates.push(await Selector('[name="zone_code"] option').nth(i).value)          
@@ -29,7 +29,7 @@ test('Second homework test', async t => {
         .typeText('input[name="company"]', faker.company.companySuffix())
         .typeText('input[name="tax_id"]', "NL999999999B99")
         .typeText('input[name="phone"]', faker.phone.phoneNumberFormat(0))
-        
+
         //address
         .typeText('input[name="address1"]', faker.address.streetAddress())
         .typeText('input[name="address2"]', faker.address.secondaryAddress())
@@ -60,3 +60,6 @@ test('Second homework test', async t => {
         .expect(expectedText.replace(/[^A-Za-z0-9]/g, ' ').trim()).eql(successMsg)
         .expect(expectedPageUrl()).contains('');
 });
+
+
+
