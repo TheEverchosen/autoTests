@@ -4,7 +4,7 @@ import * as faker  from "faker";
 fixture `Registration page`
     .page `http://ip-5236.sunline.net.ua:38015/create_account`;
 
-test('Ammended homework test', async t => {
+test('Registration tests', async t => {
     
     const email = faker.internet.email();
     const password = faker.internet.password(10);
@@ -59,7 +59,7 @@ test('All fields test', async t => {
         .expect(expectedPageUrl()).contains('');
 });
 
-test('US test', async t => {
+test('US registration test', async t => {
     
     //declarations
     const email = faker.internet.email();
