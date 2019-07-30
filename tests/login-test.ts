@@ -7,7 +7,7 @@ const successMsg = 'You are now logged in as My User';
 
 
 fixture `Login page`
-    .page `http://ip-5236.sunline.net.ua:38015/create_account`;
+    .page `http://ip-5236.sunline.net.ua:38015/`;
 
 test('Login test', async t => {
     

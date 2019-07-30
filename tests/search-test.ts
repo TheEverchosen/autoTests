@@ -7,7 +7,7 @@ const password = 'eKwmdnr78337'
 const successMsg = 'You are now logged in as My User';
 
 fixture `Search`
-    .page `http://ip-5236.sunline.net.ua:38015/create_account`
+    .page `http://ip-5236.sunline.net.ua:38015/`
     .beforeEach (async t => {
 
         await t
