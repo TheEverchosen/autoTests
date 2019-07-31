@@ -4,7 +4,7 @@
   "description": "test project",
   "main": "index.js",
   "scripts": {
-    "test": "testcafe chrome ./tests/update-test.ts"
+    "test": "testcafe chrome ./tests/search-test.ts"
   },
   "author": "M. Solopii",
   "devDependencies": {

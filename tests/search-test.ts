@@ -1,9 +1,10 @@
 import {ClientFunction, Selector} from 'testcafe';
 import * as faker  from "faker";
+import {email, password} from "./passwordGen"
 
 //td: move creds to separate file and import
-const email = 'myrandommail@testmail.com'
-const password = 'eKwmdnr78337'
+//const email = 'myrandommail@testmail.com'
+//const password = 'eKwmdnr78337'
 const successMsg = 'You are now logged in as My User';
 
 fixture `Search`
