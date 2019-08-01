@@ -35,20 +35,32 @@ test('All fields test', async t => {
     const successMsg = 'Your customer account has been created';
 
     await t
+
+        //address + taxid
         .typeText('input[name="company"]', faker.company.companySuffix())
         .typeText('input[name="tax_id"]', "NL999999999B99")
         .typeText('input[name="address1"]', faker.address.streetAddress())
         .typeText('input[name="address2"]', faker.address.secondaryAddress())
         .typeText('input[name="postcode"]', faker.address.zipCode("#####"))
-        .typeText('input[name="phone"]', faker.phone.phoneNumberFormat(0))
         .typeText('input[name="city"]', faker.address.city())
+
+        //phone no
+        .typeText('input[name="phone"]', faker.phone.phoneNumberFormat(0))
+
+        //name
         .typeText('input[name="firstname"]', faker.name.firstName())
         .typeText('input[name="lastname"]', faker.name.lastName())
+
+        //country
         .click('.form-control[name="country_code"]')
         .click(Selector('option').withAttribute('value', 'UA'))
+        
+        //email + password
         .typeText('[name="customer_form"] [name="email"]', email)
         .typeText('[name="customer_form"] [name="password"]', password)
         .typeText('[name="customer_form"] [name="confirmed_password"]', password)
+
+        //finalising
         .click('[name="newsletter"]')
         .click('[name="create_account"]');
 
@@ -110,4 +122,6 @@ test('US registration test', async t => {
     await t
         .expect(expectedText.replace(/[^A-Za-z0-9]/g, ' ').trim()).eql(successMsg)
         .expect(expectedPageUrl()).contains('');
+
+    console.log("CREDS: ", email, password)
 });

@@ -11,5 +11,5 @@ export function generatePassword(length){
     return password;
 }
 
-export var email = 'myrandommail2@testmail.com'
-export var password = '12345678'
+export var email = 'Beryl_DuBuque68@yahoo.com'
+export var password = '7s1gGTttLH'

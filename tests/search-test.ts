@@ -2,11 +2,6 @@ import {ClientFunction, Selector} from 'testcafe';
 import * as faker  from "faker";
 import {email, password} from "./passwordGen"
 
-//td: move creds to separate file and import
-//const email = 'myrandommail@testmail.com'
-//const password = 'eKwmdnr78337'
-const successMsg = 'You are now logged in as My User';
-
 fixture `Search`
     .page `http://ip-5236.sunline.net.ua:38015/`
     .beforeEach (async t => {
@@ -38,9 +33,7 @@ test('Search sorting test', async t => {
     .click('[href="http://ip-5236.sunline.net.ua:38015/search?query=Duck&page=1&sort=price"]');
 
     let temp = await Selector(".products").innerText;
-    let priceArray = temp.replace(/[^z0-9]/g, ' ').split(' ').filter(Number).sort();
-    console.log("AHAHAAH: ", priceArray);
-    
+    let priceArray = temp.replace(/[^z0-9]/g, ' ').split(' ').filter(Number).sort();    
 
     await t
     .expect(temp).contains("Duck")

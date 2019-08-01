@@ -7,12 +7,8 @@ const axios = require('axios');
 
 //TD: create separate BEFORE which would register separate user just for this test case. Also 
 // separate this out into a different test suit
-//const email = 'myrandommail2@testmail.com'
-//var password = '12345678'
 var newPassword = ''
 var testPassword = 'AHAHAH'
-//const successMsg = 'You are now logged in as My User';
-
 
 fixture `Order confirmation`
     .page `http://ip-5236.sunline.net.ua:38015/`
@@ -27,9 +23,6 @@ fixture `Order confirmation`
     await t
         .click('[class="account dropdown"]')
         .click('[href="http://ip-5236.sunline.net.ua:38015/logout"]')
-        console.log("Old password: ", testPassword)
-        testPassword = newPassword;
-        console.log("New password: ", testPassword)
 })
 
 // Editng name test
@@ -52,8 +45,4 @@ test('Edit name test', async t => {
     .wait(10000)
 }); */
 
-test('Order test', async t => {
-    await t     
-    newPassword = generatePassword(10);
 
-})

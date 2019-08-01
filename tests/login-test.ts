@@ -1,11 +1,7 @@
 import {ClientFunction, Selector} from 'testcafe';
 import {email, password} from "./passwordGen"
 
-//td: move creds to separate file and import
-//const email = 'myrandommai2@testmail.com'
-//const password = 'eKwmdnr78337'
 const successMsg = 'You are now logged in as My User';
-
 
 fixture `Login page`
     .page `http://ip-5236.sunline.net.ua:38015/`;
