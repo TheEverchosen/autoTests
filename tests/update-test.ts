@@ -1,5 +1,4 @@
 import {ClientFunction, Selector} from 'testcafe';
-import * as faker  from "faker";
 import {generatePassword, password, email} from "./passwordGen"
 
 
