@@ -12,7 +12,7 @@ fixture `Order`
         await logout()
     })
 
-test('Order test', async t => {
+test.skip('Order test', async t => {
     await t     
     .typeText('.form-control ', 'Duck')
     .pressKey('enter')
@@ -26,4 +26,19 @@ test('Order test', async t => {
     await t
     .expect(successOrder.includes('is successfully completed')).ok()
 
+})
+
+test('Confirm order history', async t => {
+    await t
+    .typeText('.form-control ', 'Duck')
+    .pressKey('enter')
+    .click('[data-name="Blue Duck"]')
+    .click('[name="add_cart_product"]')
+    .click('.featherlight-close-icon')
+    .click('[id="cart"]')
+    .click(':nth-of-type(1) [name="confirm_order"]') // no, you can't make this shorter!
+
+    let orderNumber = await Selector('[id="box-order-success"] h1').innerText
+    orderNumber = orderNumber.toString().replace(/[^0-9]/g, '')
+    console.log(" JKL:KDSHGKJLFHGLKJSDFHL:KSJD", orderNumber)
 })
