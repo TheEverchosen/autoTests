@@ -9,7 +9,7 @@ const axios = require('axios');
 var newPassword = ''
 var testPassword = 'AHAHAH'
 
-fixture `Order confirmation`
+fixture `Updating information`
     .page `http://ip-5236.sunline.net.ua:38015/`
     .beforeEach (async t => {
     await t    
@@ -41,7 +41,24 @@ test('Edit name test', async t => {
     .typeText('[name="phone"]', faker.phone.phoneNumberFormat(0))
     .typeText('input[name="postcode"]', faker.address.zipCode("#####"))
     .click('[name="save_details"]')
-    .wait(10000)
+
+    var expectedName = await Selector('input[name="firstname"]').value
+
+    await t 
+        .expect(expectedName.includes('Gabrielle')).ok()
 }); */
+
+test('Testing test lol', async t =>{
+    await t
+        .click('[class="account dropdown"]')
+        .click('[href="http://ip-5236.sunline.net.ua:38015/edit_account"]')
+
+    var expectedName = await Selector('input[name="firstname"]').value
+
+    console.log("Name: ", expectedName)
+    await t 
+        .expect(expectedName.includes('Gabrielle')).ok()
+    
+})
 
 
