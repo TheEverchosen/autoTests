@@ -40,5 +40,12 @@ test('Confirm order history', async t => {
 
     let orderNumber = await Selector('[id="box-order-success"] h1').innerText
     orderNumber = orderNumber.toString().replace(/[^0-9]/g, '')
-    console.log(" JKL:KDSHGKJLFHGLKJSDFHL:KSJD", orderNumber)
+    await t
+    .click('[class="account dropdown"]')
+    .click('[href="http://ip-5236.sunline.net.ua:38015/order_history"]')
+    let lastOrder = await Selector('.table tbody :first-child').innerText
+    console.log("Order number: ", lastOrder)
+
+    await t
+    .expect(lastOrder.includes(orderNumber)).ok()
 })
