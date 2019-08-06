@@ -5,6 +5,7 @@ import * as faker from "faker";
 // change name here
 const newFName = 'Gabrielle';
 const newLName = 'Whatever';
+const editButton = '[href="http://ip-5236.sunline.net.ua:38015/edit_account"]';
 
 fixture `Updating information`
     .page `http://ip-5236.sunline.net.ua:38015/`
@@ -22,7 +23,7 @@ fixture `Updating information`
 test.skip ('Edit name test', async t => {
    await t 
     .click('[class="account dropdown"]')
-    .click('[href="http://ip-5236.sunline.net.ua:38015/edit_account"]')
+    .click(editButton)
 
     // edit name
     .typeText('[name="firstname"]', "First", {replace:true})
@@ -43,10 +44,12 @@ test.skip ('Edit name test', async t => {
         .expect(expectedLName.includes(newLName)).ok()
 }); 
 
-test('Testing test lol', async t =>{
+
+// test case for trying out functions
+test.skip('Testing test', async t =>{
     await t
         .click('[class="account dropdown"]')
-        .click('[href="http://ip-5236.sunline.net.ua:38015/edit_account"]')
+        .click(editButton)
 
     var expectedName = await Selector('input[name="firstname"]').value
 
