@@ -1,5 +1,4 @@
 import {ClientFunction, Selector} from 'testcafe';
-import {email, password} from "./tools/passwordGen"
 import { login, logout } from './tools/externalFunctions';
 
 fixture `Order`
@@ -39,12 +38,14 @@ test('Confirm order history', async t => {
     .click(':nth-of-type(1) [name="confirm_order"]') // no, you can't make this shorter!
 
     let orderNumber = await Selector('[id="box-order-success"] h1').innerText
-    orderNumber = orderNumber.toString().replace(/[^0-9]/g, '')
+    orderNumber = orderNumber.replace(/[^0-9]/g, '')
+
     await t
+
     .click('[class="account dropdown"]')
     .click('[href="http://ip-5236.sunline.net.ua:38015/order_history"]')
+
     let lastOrder = await Selector('.table tbody :first-child').innerText
-    console.log("Order number: ", lastOrder)
 
     await t
     .expect(lastOrder.includes(orderNumber)).ok()
