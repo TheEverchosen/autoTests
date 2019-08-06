@@ -1,16 +1,14 @@
 import {ClientFunction, Selector} from 'testcafe';
 import {generatePassword, password, email} from "./passwordGen"
 
-
 const axios = require('axios');
-
-//TD: create separate BEFORE which would register separate user just for this test case. Also 
-// separate this out into a different test suit
-var newPassword = ''
-var testPassword = 'AHAHAH'
+const newFName = 'Gabrielle';
+const newLname = 'Whatever';
 
 fixture `Updating information`
     .page `http://ip-5236.sunline.net.ua:38015/`
+
+    //for the "proper SE" BE/AE should be done using API!
     .beforeEach (async t => {
     await t    
         .click('[class="account dropdown"]')
@@ -42,10 +40,12 @@ test('Edit name test', async t => {
     .typeText('input[name="postcode"]', faker.address.zipCode("#####"))
     .click('[name="save_details"]')
 
-    var expectedName = await Selector('input[name="firstname"]').value
+    var expectedFName = await Selector('input[name="firstname"]').value
+    var expectedLName = await Selector('input[name="lastname"]').value
 
     await t 
-        .expect(expectedName.includes('Gabrielle')).ok()
+        .expect(expectedFName.includes(newFName)).ok()
+        .expect(expectedLName.includes(newLName)).ok()
 }); */
 
 test('Testing test lol', async t =>{
@@ -57,7 +57,7 @@ test('Testing test lol', async t =>{
 
     console.log("Name: ", expectedName)
     await t 
-        .expect(expectedName.includes('Gabrielle')).ok()
+        .expect(expectedName.includes(newFName)).ok()
     
 })
 
