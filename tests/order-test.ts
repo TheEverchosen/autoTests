@@ -1,16 +1,16 @@
 import {ClientFunction, Selector} from 'testcafe';
-import {email, password} from "./passwordGen"
+import {email, password} from "./tools/passwordGen"
+import { login, logout } from './tools/externalFunctions';
 
 fixture `Order`
     .page `http://ip-5236.sunline.net.ua:38015/`
     .beforeEach (async t => {
+        await login()
+    })
 
-        await t
-            .click('[class="account dropdown"]')
-            .typeText('[placeholder="Email Address"]', email)
-            .typeText('[placeholder="Password"]', password)
-            .click('[name="login"]')
-    });
+    .afterEach(async t => {
+        await logout()
+    })
 
 test('Order test', async t => {
     await t     

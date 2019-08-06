@@ -1,30 +1,25 @@
-import {ClientFunction, Selector} from 'testcafe';
-import {generatePassword, password, email} from "./passwordGen"
+import { ClientFunction, Selector, t } from 'testcafe';
+import { login, logout } from './tools/externalFunctions';
+import * as faker from "faker";
 
-const axios = require('axios');
+// change name here
 const newFName = 'Gabrielle';
-const newLname = 'Whatever';
+const newLName = 'Whatever';
 
 fixture `Updating information`
     .page `http://ip-5236.sunline.net.ua:38015/`
 
     //for the "proper SE" BE/AE should be done using API!
-    .beforeEach (async t => {
-    await t    
-        .click('[class="account dropdown"]')
-        .typeText('[placeholder="Email Address"]', email)
-        .typeText('[placeholder="Password"]', password)
-        .click('[name="login"]');
+    .beforeEach (async () => {  
+        await login()        
 })
-    .afterEach(async t => {
-    await t
-        .click('[class="account dropdown"]')
-        .click('[href="http://ip-5236.sunline.net.ua:38015/logout"]')
+    .afterEach(async () => {
+        await logout()
 })
 
 // Editng name test
-/*
-test('Edit name test', async t => {
+
+test.skip ('Edit name test', async t => {
    await t 
     .click('[class="account dropdown"]')
     .click('[href="http://ip-5236.sunline.net.ua:38015/edit_account"]')
@@ -46,7 +41,7 @@ test('Edit name test', async t => {
     await t 
         .expect(expectedFName.includes(newFName)).ok()
         .expect(expectedLName.includes(newLName)).ok()
-}); */
+}); 
 
 test('Testing test lol', async t =>{
     await t
@@ -60,5 +55,3 @@ test('Testing test lol', async t =>{
         .expect(expectedName.includes(newFName)).ok()
     
 })
-
-
