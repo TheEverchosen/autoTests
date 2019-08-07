@@ -24,7 +24,6 @@ test.skip('Order test', async t => {
 
     await t
     .expect(successOrder.includes('is successfully completed')).ok()
-
 })
 
 test('Confirm order history', async t => {
