@@ -1,11 +1,17 @@
 import {ClientFunction, Selector} from 'testcafe';
 import { watchFile } from 'fs';
+import { waitForElementToExist } from './tools/expected-condition-ts';
 const axios = require("axios")
 
 fixture `API login`
     .page `https://www.app.trastra.com/signin`;
 
+
 test('Axios test', async t => {
+    
+    const element = await Selector('[class="MuiGrid0318 MuiGrid0352 MuiGrid0372 full-width"]')
+    await waitForElementToExist(element, 10000)
+
     await axios({
         method: 'post',
         url: 'https://www.app.trastra.com/signin',
