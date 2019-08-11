@@ -83,3 +83,27 @@ if (!visible && throwError) {
 
     return visible;
 }
+
+export async function waitForElementToBeInvisible(
+    element: Selector,
+    ms: number = DEFAULT_TIMEOUT,
+    throwError: boolean = false
+): Promise<boolean> {
+    const waitInterval = 250;
+    let visible = await this.isVisible(element, waitInterval);
+    let waitTime = 0;
+    while (visible && waitTime < ms) {
+        waitTime += waitInterval;
+        await this.wait(waitInterval);
+        visible = await this.isVisible(element, waitInterval);
+    }
+
+if (visible && throwError) {
+    throw new Error(
+        `Timeout expired waiting ${ms}ms for element '${element.name}'
+        to become invisible using identifier '${element.name}'`
+    );
+}
+
+    return visible;
+}
