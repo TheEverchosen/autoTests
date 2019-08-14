@@ -42,7 +42,7 @@ class RegistrationPage extends BasePage {
 
     async getRegistrationSuccessMessage(): Promise<string> {
         const expectedText = await this.successRegistrationMessage.innerText;
-        return  expectedText.replace(/[^A-Za-z0-9]/g, ' ').trim();
+        return  expectedText.replace(/\W/g, ' ').trim();
     }
 }
 

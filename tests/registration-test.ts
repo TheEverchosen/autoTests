@@ -24,7 +24,7 @@ test('Registration tests', async t => {
     const expectedText = await Selector('.alert.alert-success').innerText;
     const expectedPageUrl = ClientFunction(() => window.location.href);
     await t
-        .expect(expectedText.replace(/[^A-Za-z0-9]/g, ' ').trim()).eql(successMsg)
+        .expect(expectedText.replace(/\W/g, ' ').trim()).eql(successMsg)
         .expect(expectedPageUrl()).contains('');
 });
 
@@ -67,7 +67,7 @@ test('All fields test', async t => {
     const expectedText = await Selector('.alert.alert-success').innerText;
     const expectedPageUrl = ClientFunction(() => window.location.href);
     await t
-        .expect(expectedText.replace(/[^A-Za-z0-9]/g, ' ').trim()).eql(successMsg)
+        .expect(expectedText.replace(/\W/g, ' ').trim()).eql(successMsg)
         .expect(expectedPageUrl()).contains('');
 });
 
@@ -120,8 +120,7 @@ test('US registration test', async t => {
     const expectedPageUrl = ClientFunction(() => window.location.href);
 
     await t
-        .expect(expectedText.replace(/[^A-Za-z0-9]/g, ' ').trim()).eql(successMsg)
+        .expect(expectedText.replace(/\W/g, ' ').trim()).eql(successMsg)
         .expect(expectedPageUrl()).contains('');
 
-    console.log("CREDS: ", email, password)
 });

@@ -2,7 +2,6 @@ import RegistrationPage from "./pages/registrationPage";
 import {assert} from "./assertion/assertion-ts";
 import {baseUrl} from "./config/configFile";
 import {validCustomerData} from "./testData";
-import { t } from "testcafe";
 
 // Define test data
 const successMsg = 'Your customer account has been created';
