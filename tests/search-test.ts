@@ -1,4 +1,4 @@
-import {ClientFunction, Selector} from 'testcafe';
+import { Selector} from 'testcafe';
 import { login, logout } from './tools/externalFunctions';
 
 fixture `Search`

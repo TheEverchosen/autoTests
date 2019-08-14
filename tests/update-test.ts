@@ -1,4 +1,4 @@
-import { ClientFunction, Selector, t } from 'testcafe';
+import { Selector } from 'testcafe';
 import { login, logout } from './tools/externalFunctions';
 import * as faker from "faker";
 
