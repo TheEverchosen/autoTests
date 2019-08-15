@@ -9,11 +9,33 @@ class OrderPage extends BasePage {
     }
 
     searchBar = Selector('.form-control')
-    searchButton = Selector('enter')
+    searchButton = 'enter'
     blueDuck = Selector('[data-name="Blue Duck"]')
     addProductButton = Selector('[name="add_cart_product"]')
     closeButton = Selector('.featherlight-close-icon')
     cartButton = Selector('[id="cart"]')
     confirmOrderButton = Selector(':nth-of-type(1) [name="confirm_order"]')
     successOrderText = Selector('.box').innerText
+
+    async createOrder(orderDetails: OrderDetails): Promise<void>{
+        await t
+        .typeText(this.searchBar, orderDetails.productName)
+        .pressKey(this.searchButton)
+        .click(this.blueDuck)
+        .click(this.addProductButton)
+        .click(this.closeButton)
+        .click(this.cartButton)
+        .click(this.confirmOrderButton)
+    }
+
+    async getSuccessMessage(): Promise<string>{
+        const successMessage = await this.successOrderText;
+        return successMessage.replace(/[^0-9]/g, '')
+    } 
 }
+
+export interface OrderDetails{
+    productName: string
+}
+
+export default new OrderPage();
