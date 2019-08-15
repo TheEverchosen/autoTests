@@ -8,6 +8,7 @@ class OrderPage extends BasePage {
         super();
     }
 
+    url: string = `${baseUrl}`;
     searchBar = Selector('.form-control')
     searchButton = 'enter'
     blueDuck = Selector('[data-name="Blue Duck"]')
@@ -15,7 +16,7 @@ class OrderPage extends BasePage {
     closeButton = Selector('.featherlight-close-icon')
     cartButton = Selector('[id="cart"]')
     confirmOrderButton = Selector(':nth-of-type(1) [name="confirm_order"]')
-    successOrderText = Selector('.box').innerText
+    successOrderText = Selector('.box')
 
     async createOrder(orderDetails: OrderDetails): Promise<void>{
         await t
@@ -29,8 +30,8 @@ class OrderPage extends BasePage {
     }
 
     async getSuccessMessage(): Promise<string>{
-        const successMessage = await this.successOrderText;
-        return successMessage.replace(/[^0-9]/g, '')
+        const successMessage = await this.successOrderText.innerText;
+        return successMessage
     } 
 }
 
