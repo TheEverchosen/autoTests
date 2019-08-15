@@ -2,6 +2,9 @@ import { Selector, t} from "testcafe"
 import BasePage from "./basePage"
 import { baseUrl } from "../config/configFile"
 
+
+// For now, searchresult and order page are the same
+// TD: Separate them out later (though likely to be inefficient)
 class OrderPage extends BasePage {
 
     constructor(){
