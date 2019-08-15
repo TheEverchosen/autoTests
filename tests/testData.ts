@@ -1,6 +1,6 @@
 import * as faker from "faker";
 import {CustomerDetails} from "./pages/registrationPage";
-import {OrderDetails} from "./pages/orderPage"
+import {OrderDetails} from "./pages/mainPage"
 
 const password = faker.internet.password(10);
 export const validCustomerData: CustomerDetails = {

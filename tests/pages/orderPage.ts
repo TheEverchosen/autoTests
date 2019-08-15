@@ -9,8 +9,6 @@ class OrderPage extends BasePage {
     }
 
     url: string = `${baseUrl}`;
-    searchBar = Selector('.form-control')
-    searchButton = 'enter'
     blueDuck = Selector('[data-name="Blue Duck"]')
     addProductButton = Selector('[name="add_cart_product"]')
     closeButton = Selector('.featherlight-close-icon')
@@ -22,10 +20,8 @@ class OrderPage extends BasePage {
     orderHistory = Selector('[href="http://ip-5236.sunline.net.ua:38015/order_history"]')
     lastOrder = Selector('.table tbody :first-child')
 
-    async createOrder(orderDetails: OrderDetails): Promise<void>{
+    async createOrder(): Promise<void>{
         await t
-        .typeText(this.searchBar, orderDetails.productName)
-        .pressKey(this.searchButton)
         .click(this.blueDuck)
         .click(this.addProductButton)
         .click(this.closeButton)
@@ -53,10 +49,6 @@ class OrderPage extends BasePage {
         .click(this.accountDropdown)
         .click(this.orderHistory)
     }
-}
-
-export interface OrderDetails{
-    productName: string
 }
 
 export default new OrderPage();
