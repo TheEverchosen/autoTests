@@ -16,4 +16,3 @@ fixture `Order`
         await assert.contains(await OrderPage.getSuccessMessage(), expectedSuccessMessage)
     });
 
-//td: second test
