@@ -49,4 +49,3 @@ test('Confirm order history', async t => {
     await t
     .expect(lastOrder.includes(orderNumber)).ok()
 })
-// ahahahaha
