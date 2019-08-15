@@ -3,11 +3,11 @@ import { login, logout } from './tools/externalFunctions';
 
 fixture `Order`
     .page `http://ip-5236.sunline.net.ua:38015/`
-    .beforeEach (async t => {
+    .beforeEach (async () => {
         await login()
     })
 
-    .afterEach(async t => {
+    .afterEach(async () => {
         await logout()
     })
 
