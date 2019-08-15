@@ -30,7 +30,7 @@ test('Search sorting test', async t => {
     .click('[href="http://ip-5236.sunline.net.ua:38015/search?query=Duck&page=1&sort=price"]');
 
     let temp = await Selector(".products").innerText;
-    let priceArray = temp.replace(/[^z0-9]/g, ' ').split(' ').filter(Number).sort();    
+    let priceArray = temp.replace(/[^0-9]/g, ' ').split(' ').filter(Number).sort();    
 
     await t
     .expect(temp).contains("Duck")

@@ -4,9 +4,9 @@
   "description": "test project",
   "main": "index.js",
   "scripts": {
-    "test": "testcafe chrome ./tests/order-po-test.ts"
+    "test": "testcafe chrome ./tests/search-test.ts"
   },
-  "author": "M. Solopii",
+  "author": "I. Petrovskyy",
   "devDependencies": {
     "@types/faker": "4.1.5",
     "testcafe": "^1.3.3",
