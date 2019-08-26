@@ -2,6 +2,8 @@ import { Selector, t} from "testcafe"
 import BasePage from "./basePage"
 import { baseUrl } from "../config/configFile"
 
+//in fact, this is supplementary functions page
+
 class OrderPage extends BasePage {
 
     constructor(){
@@ -13,7 +15,6 @@ class OrderPage extends BasePage {
     confirmOrderButton = Selector(':nth-of-type(1) [name="confirm_order"]')
     accountDropdown = Selector('[class="account dropdown"]')
     orderHistory = Selector('[href="http://ip-5236.sunline.net.ua:38015/order_history"]')
-    lastOrder = Selector('.table tbody :first-child')
 
     async confirmOrder(): Promise<void>{
         await t
