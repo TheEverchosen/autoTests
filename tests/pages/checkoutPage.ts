@@ -1,6 +1,5 @@
 import { Selector, t} from "testcafe"
 import BasePage from "./basePage"
-import { baseUrl } from "../config/configFile"
 
 class CheckoutPage extends BasePage {
 
@@ -8,8 +7,6 @@ class CheckoutPage extends BasePage {
         super();
     }
 
-    cartButton = Selector('[id="cart"]')
-    confirmOrderButton = Selector(':nth-of-type(1) [name="confirm_order"]')
     successOrderText = Selector('.box')
     orderNumber = Selector('[id="box-order-success"] h1')
     lastOrder = Selector('.table tbody :first-child')
