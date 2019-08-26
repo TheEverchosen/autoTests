@@ -23,11 +23,9 @@ class OrderPage extends BasePage {
     orderHistory = Selector('[href="http://ip-5236.sunline.net.ua:38015/order_history"]')
     lastOrder = Selector('.table tbody :first-child')
 
-    async createOrder(): Promise<void>{
+    async confirmOrder(): Promise<void>{
         await t
-        .click(this.blueDuck)
-        .click(this.addProductButton)
-        .click(this.closeButton)
+        .pressKey('esc')
         .click(this.cartButton)
         .click(this.confirmOrderButton)
     }

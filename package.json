@@ -4,7 +4,7 @@
   "description": "test project",
   "main": "index.js",
   "scripts": {
-    "test": "testcafe chrome ./tests/search-test.ts"
+    "test": "testcafe chrome ./tests/order-po-test.ts"
   },
   "author": "I. Petrovskyy",
   "devDependencies": {

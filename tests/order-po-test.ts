@@ -3,6 +3,7 @@ import {assert} from "./assertion/assertion-ts"
 import { validOrderData } from "./testData";
 import { login, logout } from  "./tools/externalFunctions"
 import MainPage from "./pages/mainPage"
+import SearchResultPage from "./pages/searchResultPage"
 
 const expectedSuccessMessage = 'is successfully completed';
 
@@ -15,15 +16,17 @@ fixture `Order`
         await logout()
     })
 
-    test('Order test', async t => {
+    test('Order test', async () => {
         await MainPage.searchForProduct(validOrderData)
-        await OrderPage.createOrder();
+        await SearchResultPage.createOrder();
+        await OrderPage.confirmOrder();
         await assert.contains(await OrderPage.getSuccessMessage(), expectedSuccessMessage)
     });
 
-    test('Confirm order history', async t => {
+    test('Confirm order history', async () => {
         await MainPage.searchForProduct(validOrderData);
-        await OrderPage.createOrder();
+        await SearchResultPage.createOrder();
+        await OrderPage.confirmOrder();
         const orderNumber = await OrderPage.getOrderNumber();
         await OrderPage.getToCart();
         const lastOrder = await OrderPage.getLastOrder();
