@@ -15,13 +15,6 @@ class SearchResultPage extends BasePage {
     blueDuck = Selector('[data-name="Blue Duck"]')
     addProductButton = Selector('[name="add_cart_product"]')
     closeButton = Selector('.featherlight-close-icon')
-    cartButton = Selector('[id="cart"]')
-    confirmOrderButton = Selector(':nth-of-type(1) [name="confirm_order"]')
-    successOrderText = Selector('.box')
-    orderNumber = Selector('[id="box-order-success"] h1')
-    accountDropdown = Selector('[class="account dropdown"]')
-    orderHistory = Selector('[href="http://ip-5236.sunline.net.ua:38015/order_history"]') // replace with url
-    lastOrder = Selector('.table tbody :first-child')
 
     async createOrder(): Promise<void>{
         await t
